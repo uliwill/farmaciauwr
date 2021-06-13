@@ -20,4 +20,9 @@ public class Fornecedores {
 		this.descricao = descricao;
 	}
 
+	@Override
+	public String toString() {
+		return "Fornecedores [codigo=" + codigo + ", descricao=" + descricao + "]";
+	}
+
 }
