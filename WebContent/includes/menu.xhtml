@@ -9,19 +9,16 @@
 	<h:form>
 		<p:menubar>
 			<p:submenu label="Arquivo">
-				<p:menuitem value="Empresa" url="#" />
-				<p:menuitem value="Site" url="#" />
+				<p:menuitem value="Página Inicial" outcome="principal.xhtml" />
+				<p:menuitem value="Repositório" url="https://github.com/uliwill/farmaciauwr" target="_blank" />
 				<p:menuitem value="Sair" url="#" />
 			</p:submenu>
 			<p:submenu label="Cadastros">
 				<p:menuitem value="Fornecedores" outcome="/pages/fornecedores.xhtml" />
-				<p:menuitem value="Produtos" url="#" />
-			</p:submenu>
-			<p:submenu label="Configurações">
-
+				<p:menuitem value="Produtos" outcome="/pages/produtos.xhtml" />
 			</p:submenu>
 			<p:submenu label="Ajuda">
-				<p:menuitem value="Sobre" url="#" />
+				<p:menuitem value="Sobre" url="https://github.com/uliwill" target="_blank" />
 			</p:submenu>
 		</p:menubar>
 	</h:form>

@@ -19,19 +19,19 @@
 				filteredValue="#{MBFornecedores.itensFiltrados}" paginator="true"
 				rows="7">
 
-				<c:facet name="header">Lista de Fornecedores</c:facet>
+				<c:facet name="header">LISTA DE FORNECEDORES</c:facet>
 
-				<p:column headerText="Código" sortBy="#{item.codigo}"
+				<p:column headerText="CÓDIGO" sortBy="#{item.codigo}"
 					filterBy="#{item.codigo}">
 					<h:outputText value="#{item.codigo}" />
 				</p:column>
 
-				<p:column headerText="Descrição" sortBy="#{item.descricao}"
+				<p:column headerText="DESCRIÇÃO" sortBy="#{item.descricao}"
 					filterBy="#{item.descricao}">
 					<h:outputText value="#{item.descricao}" />
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column headerText="OPÇÕES">
 					<p:commandButton icon="ui-icon-pencil"
 						oncomplete="PF('dlgforEditar').show();"
 						update=":frmforEditar:pnforEditar">
@@ -62,16 +62,17 @@
 
 			<h:form id="frmforNovo">
 				<h:panelGrid id="pnforNovo" columns="2">
-					<p:outputLabel value="Descrição:" />
-					<h:inputText size="30" maxlength="50"
-						value="#{MBFornecedores.fornecedores.descricao}" />
+					<p:outputLabel value="Descrição:" for="txtDescNovo" />
+					<h:inputText size="30" maxlength="50" id="txtDescNovo"
+						value="#{MBFornecedores.fornecedores.descricao}" required="true"
+						requiredMessage="O campo descrição é obrigatório" />
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar"
 						actionListener="#{MBFornecedores.novo}"
-						oncomplete="PF('dlgforNovo').hide(); PF('tabelaFornecedores').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgforNovo', 'tbfornecedores');"
 						update=":frmfornecedores:tbfornecedores :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgforNovo').hide();" />
 				</h:panelGrid>
 			</h:form>
@@ -94,7 +95,7 @@
 						actionListener="#{MBFornecedores.excluir}"
 						oncomplete="PF('dlgforExcluir').hide(); PF('tabelaFornecedores').clearFilters();"
 						update=":frmfornecedores:tbfornecedores :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgforExcluir').hide();" />
 				</h:panelGrid>
 			</h:form>
@@ -108,16 +109,18 @@
 					<h:outputText value="Código" />
 					<h:outputText value="#{MBFornecedores.fornecedores.codigo}" />
 
-					<h:outputText value="Descrição" />
-					<h:inputText value="#{MBFornecedores.fornecedores.descricao}" />
+					<h:outputText value="Descrição" for="txtEdtfor" />
+					<h:inputText id="txtEdtfor"
+						value="#{MBFornecedores.fornecedores.descricao}" required="true"
+						requiredMessage="O campo descrição é obrigatório" />
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
 					<p:commandButton value="Editar"
 						actionListener="#{MBFornecedores.editar}"
-						oncomplete="PF('dlgforEditar').hide(); PF('tabelaFornecedores').clearFilters();"
+						oncomplete="verificar(xhr, status, args, 'dlgforEditar', 'tbfornecedores');"
 						update=":frmfornecedores:tbfornecedores :msgGlobal" />
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" process="@this"
 						onclick="PF('dlgforEditar').hide();" />
 				</h:panelGrid>
 			</h:form>
